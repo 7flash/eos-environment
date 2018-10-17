@@ -134,6 +134,9 @@ namespace eosio {
         if(transfer.from == _this_contract)
             return;
 
+        if(transfer.quantity.symbol != S(4, EOS))
+            return;
+
         auto swapIterator = _swaps.find(stoll(transfer.memo));
 
         eosio_assert(swapIterator != _swaps.end(), "Swap not found");
@@ -150,7 +153,7 @@ namespace eosio {
 
     void swaponline::apply(account_name contract, account_name action)
     {
-        if(action == N(transfer)) {
+        if(contract == N(eosio.token) && action == N(transfer)) {
             deposit(unpack_action_data<currency::transfer>(), contract);
             return;
         }

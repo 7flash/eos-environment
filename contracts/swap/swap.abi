@@ -13,11 +13,12 @@
         {"name":"swapID", "type":"uint64"},
         {"name":"eosOwner", "type":"account_name"},
         {"name":"btcOwner", "type":"account_name"},
-        {"name":"requiredDeposit", "type":"uint64"},
-        {"name":"currentDeposit", "type":"uint64"},
-        {"name":"secretHash", "type":"checksum160"},
-        {"name":"secret", "type":"checksum160"},
-        {"name":"status", "type":"uint8"}
+        {"name":"requiredDeposit", "type":"asset"},
+        {"name":"currentDeposit", "type":"asset"},
+        {"name":"secretHash", "type":"checksum256"},
+        {"name":"secret", "type":"checksum256"},
+        {"name":"status", "type":"uint8"},
+        {"name":"createdAt", "type":"uint32"}
     ]
   },
   {
@@ -26,8 +27,8 @@
     "fields": [
       {"name":"eosOwner", "type": "account_name"},
       {"name":"btcOwner", "type": "account_name"},
-      {"name":"quantity", "type": "uint64"},
-      {"name":"secretHash", "type": "checksum160"}
+      {"name":"quantity", "type": "asset"},
+      {"name":"secretHash", "type": "checksum256"}
     ]
   },
   {
@@ -35,7 +36,7 @@
     "base": "",
     "fields": [
        {"name":"swapID", "type": "uint64"},
-       {"name":"secret", "type": "checksum160"}
+       {"name":"secret", "type": "checksum256"}
     ]
   },
   {
@@ -45,8 +46,6 @@
        {"name": "swapID", "type": "uint64"}
     ]
   },
-
-
   {
     "name": "transfer",
     "base": "",

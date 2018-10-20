@@ -19,9 +19,11 @@ namespace eosio {
                 uint32_t createdAt;
 
                 uint64_t primary_key() const { return swapID; }
+                uint64_t by_creator() const { return eosOwner; }
+                uint64_t by_participant() const { return btcOwner; }
             };
 
-            multi_index<N(swap), swap> _swaps;
+            multi_index<N(swap), swap, indexed_by<N(eosOwner), const_mem_fun<swap, uint64_t, &swap::by_creator>>, indexed_by<N(btcOwner), const_mem_fun<swap, uint64_t, &swap::by_participant>>> _swaps;
 
             account_name _this_contract;
         public:
